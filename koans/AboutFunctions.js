@@ -6,39 +6,41 @@ describe("About Functions", function () {
             return a + b;
         }
 
-        expect(add(1, 2)).toBe(FILL_ME_IN);
+        expect(add(1, 2)).toBe(3);
     });
 
     it("should know internal variables override outer variables", function () {
+        
         var message = "Outer";
-
         function getMessage() {
             return message;
-        }
+        
 
         function overrideMessage() {
             var message = "Inner";
             return message;
-        }
+        
 
-        expect(getMessage()).toBe(FILL_ME_IN);
-        expect(overrideMessage()).toBe(FILL_ME_IN);
-        expect(message).toBe(FILL_ME_IN);
+        expect(getMessage()).toBe("Outer");
+        expect(overrideMessage()).toBe("Inner");
+        expect(message).toBe("Outer", "Inner");
+        }
+        }
     });
 
     it("should allow extra function arguments", function () {
 
         function returnFirstArg(firstArg) {
             return firstArg;
-        }
+        
 
-        expect(returnFirstArg("first", "second", "third")).toBe(FILL_ME_IN);
+        expect(returnFirstArg("first", "second", "third")).toBe(secondArg);
 
         function returnSecondArg(firstArg, secondArg) {
             return secondArg;
         }
 
-        expect(returnSecondArg("only give first arg")).toBe(FILL_ME_IN);
+        expect(returnSecondArg("only give first arg")).toBe();
 
         function returnAllArgs() {
             var argsArray = [];
@@ -46,10 +48,13 @@ describe("About Functions", function () {
                 argsArray.push(arguments[i]);
             }
             return argsArray.join(",");
+        
         }
 
-        expect(returnAllArgs("first", "second", "third")).toBe(FILL_ME_IN);
-    });
+        expect(returnAllArgs("first", "second", "third")).toBe(undefined);
+        }
+        });
+    
 
     it("should pass functions as values", function () {
 
@@ -62,12 +67,12 @@ describe("About Functions", function () {
         };
 
         var praiseSinger = {
-            givePraise: appendRules
+            givePraise: appendRules,
         };
-        expect(praiseSinger.givePraise("John")).toBe(FILL_ME_IN);
+        expect(praiseSinger.givePraise("John")).toBe("John rules!");
 
         praiseSinger.givePraise = appendDoubleRules;
-        expect(praiseSinger.givePraise("Mary")).toBe(FILL_ME_IN);
+        expect(praiseSinger.givePraise("Mary")).toBe("Mary totally rules!");
 
     });
 });

@@ -32,6 +32,10 @@ describe("About Applying What We Have Learnt", function () {
                 containsNuts: true
             }
     ];
+
+        
+    
+    
     });
 
     /*********************************************************************************/
@@ -51,7 +55,7 @@ describe("About Applying What We Have Learnt", function () {
                 if (!hasMushrooms) productsICanEat.push(products[i]);
             }
         }
-
+        
         expect(productsICanEat.length).toBe(FILL_ME_IN);
     });
 
